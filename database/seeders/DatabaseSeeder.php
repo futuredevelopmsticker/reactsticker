@@ -19,5 +19,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'johndoe@mail.com',
             'password' => \bcrypt('password'),
         ]);
+
+
+          \App\Models\Sticker::factory(10)->create();
     }
 }
