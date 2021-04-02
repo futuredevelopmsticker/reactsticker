@@ -32,4 +32,19 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/stickers', [StickerController::class, 'index'])->name('sticker.index');
 
 
+Route::get('/sticker/add', [StickerController::class, 'add'])->name('sticker.add');
+
+
+
+Route::post('/sticker/preview', [StickerController::class, 'detailspreview'])
+        ->name('sticker.preview');
+
+
+Route::get('/sticker/view/{sticker}', [StickerController::class, 'view'])->name('sticker.view');
+
+
+
+
+
+
 });

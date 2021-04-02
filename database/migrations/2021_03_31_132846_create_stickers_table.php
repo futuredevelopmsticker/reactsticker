@@ -15,9 +15,13 @@ class CreateStickersTable extends Migration
     {
         Schema::create('stickers', function (Blueprint $table) {
             $table->id();
-            $table->string('title');     
-            $table->text('url');       
+            $table->string('title'); 
+            $table->string('description')->nullable();   
+            $table->string('type')->nullable();    
+            $table->text('url');  
+            $table->string('img_url')->nullable();         
             $table->foreignId('user_id'); 
+            $table->boolean('is_active')->default(0);
             $table->timestamps();
         });
     }

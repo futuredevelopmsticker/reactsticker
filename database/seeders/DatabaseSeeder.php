@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-          \App\Models\Sticker::factory(10)->create();
+            \App\Models\Sticker::factory(10)->create([
+            'is_active' => 1,
+        ]);
+
     }
 }
