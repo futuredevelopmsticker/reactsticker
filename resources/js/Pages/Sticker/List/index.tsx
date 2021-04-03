@@ -6,7 +6,7 @@ import { InertiaLink } from "@inertiajs/inertia-react"
 
 import Layout from "../../../components/general/layout"
 
-
+import route from "ziggy-js"
 
 interface Props {
 	

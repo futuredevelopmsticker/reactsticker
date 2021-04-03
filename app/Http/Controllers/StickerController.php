@@ -40,19 +40,19 @@ class StickerController extends Controller
 
 
 
-      $sticker = Sticker::create([
+     $sticker = Sticker::create([
 
 
         'title' => $showdata['title'],
 
-         'description' => $showdata['description'] || '',
+        'description' => $showdata['description'],
 
 
 
-         'type' => $showdata['type'] || '',
+        'type' => $showdata['type'],
 
 
-         'url' => $sendData['link'] || '',
+         'url' => $sendData['link'],
 
          'img_url' => $showdata['image'],
 
@@ -74,15 +74,46 @@ class StickerController extends Controller
 
 
 
-      public function view(Sticker $sticker)
+     public function view(Sticker $sticker)
+    {
 
 
-      {
+      if (Auth::user()->id !== $sticker->user_id) {
+            abort(401, 'You are not allowed to view this sticker');
+        }
+       
 
-        return $sticker;
-      }
+        return Inertia::render('Sticker/View/index', [
+            'sticker' => $sticker
+        ]);
+    }
 
 
+
+  public function makeActive(Request $request)
+    {
+        $sendData = $this->validate($request, [
+            'id' => ['required', 'exists:stickers,id']
+        ]);
+
+        $sticker = Sticker::find($sendData['id']);
+
+        if (Auth::user()->id !== $sticker->user_id) {
+            abort(401, 'You are not allowed to make this bookmark active');
+        }
+
+    
+
+
+        $sticker->is_active = 1;
+
+
+
+        $sticker->save();
+
+
+        return redirect()->route('sticker.index');
+    }
 
 
 

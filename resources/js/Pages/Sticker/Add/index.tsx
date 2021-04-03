@@ -23,13 +23,13 @@ const StickerAddPage: React.FC<Props> = () => {
 
    link: " ",
 
-   title: 'Some hardcoded title'
+   title: 'title'
       
 
    })
 
 
-   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
      setState({
       ...state,
@@ -43,7 +43,6 @@ const StickerAddPage: React.FC<Props> = () => {
     event.preventDefault()
     Inertia.post("/sticker/preview", state)
   }
-
 
   return (
 

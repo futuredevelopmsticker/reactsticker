@@ -43,7 +43,7 @@ Route::post('/sticker/preview', [StickerController::class, 'detailspreview'])
 Route::get('/sticker/view/{sticker}', [StickerController::class, 'view'])->name('sticker.view');
 
 
-
+Route::post('/sticker/make-active', [StickerController::class, 'makeActive'])->name('sticker.active');
 
 
 
