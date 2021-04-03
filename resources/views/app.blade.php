@@ -7,11 +7,14 @@
 
 
 
-    @routes
+    
 
 
     
     <script src="{{ mix('/js/app.js') }}" defer></script>
+
+
+    @routes
   </head>
   <body>
     @inertia

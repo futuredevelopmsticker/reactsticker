@@ -6,17 +6,13 @@ import { Inertia } from "@inertiajs/inertia"
 import Layout from "../../../components/general/layout"
 
 
-interface Props {
-  
-  
-
-}
 
 
 
 
 
-const StickerAddPage: React.FC<Props> = () => {
+
+const StickerAddPage: React.FC = () => {
 
 
    const [state, setState] = useState({

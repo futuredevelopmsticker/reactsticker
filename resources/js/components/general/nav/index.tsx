@@ -21,11 +21,27 @@ const Menu = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <ul className="navbar-nav mr-auto">
-                         Stickers
-                    </ul>
+                       
+                   <li className="nav-item">
+                          <InertiaLink
+                            className="nav-link"
+                            href={route("sticker.index").url()}
+                          >
+                            Stickers
+                          </InertiaLink>
+                        </li>
 
-                     <ul className="navbar-nav mr-auto">
-                         Stickers Add
+
+
+                         <li className="nav-item">
+                          <InertiaLink
+                            className="nav-link"
+                            href={route("sticker.add").url()}
+                          >
+                            Sticker add
+                          </InertiaLink>
+                        </li>
+
                     </ul>
 
 
