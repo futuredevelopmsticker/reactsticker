@@ -128,7 +128,7 @@ var Menu = function Menu() {
   }, react_1["default"].createElement("a", {
     className: "navbar-brand",
     href: "{{ url('/') }}"
-  }, "Bookmark"), react_1["default"].createElement("button", {
+  }, "Sticker"), react_1["default"].createElement("button", {
     className: "navbar-toggler",
     type: "button",
     "data-toggle": "collapse",

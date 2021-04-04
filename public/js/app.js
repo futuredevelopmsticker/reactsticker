@@ -70584,6 +70584,22 @@ var map = {
 		"./resources/js/Pages/Home/index.tsx",
 		"resources_js_Pages_Home_index_tsx"
 	],
+	"./Index": [
+		"./resources/js/Pages/Index/index.tsx",
+		"resources_js_Pages_Index_index_tsx"
+	],
+	"./Index/": [
+		"./resources/js/Pages/Index/index.tsx",
+		"resources_js_Pages_Index_index_tsx"
+	],
+	"./Index/index": [
+		"./resources/js/Pages/Index/index.tsx",
+		"resources_js_Pages_Index_index_tsx"
+	],
+	"./Index/index.tsx": [
+		"./resources/js/Pages/Index/index.tsx",
+		"resources_js_Pages_Index_index_tsx"
+	],
 	"./Sticker/Add": [
 		"./resources/js/Pages/Sticker/Add/index.tsx",
 		"resources_js_Pages_Sticker_Add_index_tsx"
@@ -70787,7 +70803,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Home_index_tsx":1,"resources_js_Pages_Sticker_Add_index_tsx":1,"resources_js_Pages_Sticker_List_index_tsx":1,"resources_js_Pages_Sticker_View_index_tsx":1}[chunkId]) return "" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Home_index_tsx":1,"resources_js_Pages_Index_index_tsx":1,"resources_js_Pages_Sticker_Add_index_tsx":1,"resources_js_Pages_Sticker_List_index_tsx":1,"resources_js_Pages_Sticker_View_index_tsx":1}[chunkId]) return "" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

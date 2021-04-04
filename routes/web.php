@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\IndexController;
+
 use App\Http\Controllers\StickerController;
 
 /*
@@ -17,9 +19,11 @@ use App\Http\Controllers\StickerController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Auth::routes();
 
