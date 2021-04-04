@@ -8,6 +8,11 @@ import Layout from "../../../components/general/layout"
 
 import route from "ziggy-js"
 
+
+import StickerItem from "../../../components/sticker/StickerItem"
+
+import ISticker from "../../../Records/ISticker"
+
 interface Props {
 	
    stickers: Array<any>
@@ -30,26 +35,16 @@ const StickerListPage: React.FC<Props> = ({ stickers }) => {
           <ul className="list-group">
             {stickers.length > 0 &&
               stickers.map((sticker, index) => {
-                return <li className="list-group-item" key={index}>
+               
 
-                  
-             
+               return (
 
+                 <StickerItem sticker={sticker} /> 
 
-
-                 <div>
-                  
-                  <InertiaLink href={route('sticker.view', {sticker: sticker.id}).url()}>{sticker.title}</InertiaLink>
-
-                  <br/>
-
-                 <span>Description: {sticker.description}</span>
+                 )
 
 
-                  </div>
 
-
-                 </li>
               })}
           </ul>
         </div>

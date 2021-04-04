@@ -21,11 +21,9 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-
 var layout_1 = __importDefault(__webpack_require__(/*! ../../../components/general/layout */ "./resources/js/components/general/layout/index.tsx"));
 
-var ziggy_js_1 = __importDefault(__webpack_require__(/*! ziggy-js */ "./node_modules/ziggy-js/dist/js/route.min.js"));
+var StickerItem_1 = __importDefault(__webpack_require__(/*! ../../../components/sticker/StickerItem */ "./resources/js/components/sticker/StickerItem/index.tsx"));
 
 var StickerListPage = function StickerListPage(_a) {
   var stickers = _a.stickers;
@@ -36,14 +34,9 @@ var StickerListPage = function StickerListPage(_a) {
   }, react_1["default"].createElement("ul", {
     className: "list-group"
   }, stickers.length > 0 && stickers.map(function (sticker, index) {
-    return react_1["default"].createElement("li", {
-      className: "list-group-item",
-      key: index
-    }, react_1["default"].createElement("div", null, react_1["default"].createElement(inertia_react_1.InertiaLink, {
-      href: ziggy_js_1["default"]('sticker.view', {
-        sticker: sticker.id
-      }).url()
-    }, sticker.title), react_1["default"].createElement("br", null), react_1["default"].createElement("span", null, "Description: ", sticker.description)));
+    return react_1["default"].createElement(StickerItem_1["default"], {
+      sticker: sticker
+    });
   })))));
 };
 
@@ -159,6 +152,56 @@ var Menu = function Menu() {
 };
 
 exports.default = Menu;
+
+/***/ }),
+
+/***/ "./resources/js/components/sticker/StickerItem/index.tsx":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/sticker/StickerItem/index.tsx ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var ziggy_js_1 = __importDefault(__webpack_require__(/*! ziggy-js */ "./node_modules/ziggy-js/dist/js/route.min.js"));
+
+var StickerItem = function StickerItem(_a) {
+  var sticker = _a.sticker;
+  return react_1["default"].createElement("li", {
+    className: "list-group-item"
+  }, react_1["default"].createElement("div", {
+    className: "row"
+  }, sticker.img_url != "" && react_1["default"].createElement("div", {
+    className: "col-md-2"
+  }, react_1["default"].createElement("img", {
+    src: sticker.img_url,
+    alt: sticker.title,
+    width: "100%"
+  })), react_1["default"].createElement("div", {
+    className: "col-md-10"
+  }, react_1["default"].createElement("span", null, react_1["default"].createElement(inertia_react_1.InertiaLink, {
+    href: ziggy_js_1["default"]("sticker.view", {
+      sticker: sticker.id
+    }).url()
+  }, sticker.title)), react_1["default"].createElement("br", null), react_1["default"].createElement("span", null, sticker.description))));
+};
+
+exports.default = StickerItem;
 
 /***/ }),
 

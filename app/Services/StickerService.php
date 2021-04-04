@@ -1,0 +1,102 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\Tag;
+
+class StickerService
+{
+    public function receiveStickerData(string $url)
+    {
+        $showdata = \OpenGraph::fetch($url, true);
+
+        $showdata['title'] = $this->receiveInfoData('title', $showdata);
+        $showdata['description'] = $this->receiveInfoData('description', $showdata);
+        $showdata['image'] = $this->receiveInfoData('image', $showdata);
+
+        return $showdata;
+    }
+
+    private function receiveInfoData(string $name, array $showdata)
+    {
+        if ($showdata[$name] === '' &&
+            isset($showdata["twitter:{$name}"]) &&
+            $dshowdata["twitter:{$name}"] !== '') {
+                return $showdata["twitter:{$name}"];
+        }
+
+        return $showdata[$name];
+    }
+
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

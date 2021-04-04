@@ -7,6 +7,8 @@ use App\Models\Sticker;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+use App\Services\StickerService;
+
 use Illuminate\Http\Request;
 
 class StickerController extends Controller
@@ -29,27 +31,28 @@ class StickerController extends Controller
 
 
 
-      public function detailspreview(Request $request)
+     public function detailspreview(Request $request, StickerService $stickerService)
     {
         $sendData = $this->validate($request, [
             'link' => ['required'],
         ]);
 
-       $showdata = \OpenGraph::fetch($sendData['link']);
+
+        $showdata = $stickerService->receiveStickerData($sendData['link']);
+
+       // $showdata = \OpenGraph::fetch($sendData['link'], true);
 
 
-
-
-     $sticker = Sticker::create([
+       $sticker = Sticker::create([
 
 
         'title' => $showdata['title'],
 
-        'description' => $showdata['description'],
+         'description' => $showdata['description'],
 
 
 
-        'type' => $showdata['type'],
+         'type' => $showdata['type'],
 
 
          'url' => $sendData['link'],
@@ -63,8 +66,12 @@ class StickerController extends Controller
           return redirect()
             ->route('sticker.view', ['sticker' => $sticker->id]);
 
-          return $showdata;
+
+
+
+       return $showdata;
     }
+
 
         public function add()
     {
