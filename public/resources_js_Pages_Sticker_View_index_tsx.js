@@ -159,9 +159,10 @@ var Menu = function Menu() {
     className: "navbar-nav ml-auto"
   }, react_1["default"].createElement("li", {
     className: "nav-item"
-  }, react_1["default"].createElement("a", {
-    className: "nav-link",
-    href: "#"
+  }, react_1["default"].createElement(inertia_react_1.InertiaLink, {
+    method: "post",
+    href: ziggy_js_1["default"]("logout").url(),
+    className: "dropdown-item"
   }, "Logout"))))));
 };
 

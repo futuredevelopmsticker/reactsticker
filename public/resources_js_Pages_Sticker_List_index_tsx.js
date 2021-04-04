@@ -21,7 +21,11 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
 var layout_1 = __importDefault(__webpack_require__(/*! ../../../components/general/layout */ "./resources/js/components/general/layout/index.tsx"));
+
+var ziggy_js_1 = __importDefault(__webpack_require__(/*! ziggy-js */ "./node_modules/ziggy-js/dist/js/route.min.js"));
 
 var StickerListPage = function StickerListPage(_a) {
   var stickers = _a.stickers;
@@ -35,7 +39,11 @@ var StickerListPage = function StickerListPage(_a) {
     return react_1["default"].createElement("li", {
       className: "list-group-item",
       key: index
-    }, react_1["default"].createElement("p", null, "Title: ", sticker.title));
+    }, react_1["default"].createElement("div", null, react_1["default"].createElement(inertia_react_1.InertiaLink, {
+      href: ziggy_js_1["default"]('sticker.view', {
+        sticker: sticker.id
+      }).url()
+    }, sticker.title), react_1["default"].createElement("br", null), react_1["default"].createElement("span", null, "Description: ", sticker.description)));
   })))));
 };
 
@@ -143,9 +151,10 @@ var Menu = function Menu() {
     className: "navbar-nav ml-auto"
   }, react_1["default"].createElement("li", {
     className: "nav-item"
-  }, react_1["default"].createElement("a", {
-    className: "nav-link",
-    href: "#"
+  }, react_1["default"].createElement(inertia_react_1.InertiaLink, {
+    method: "post",
+    href: ziggy_js_1["default"]("logout").url(),
+    className: "dropdown-item"
   }, "Logout"))))));
 };
 

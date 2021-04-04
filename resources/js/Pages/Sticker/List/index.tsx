@@ -33,7 +33,20 @@ const StickerListPage: React.FC<Props> = ({ stickers }) => {
                 return <li className="list-group-item" key={index}>
 
                   
-                  <p>Title: {sticker.title}</p>
+             
+
+
+
+                 <div>
+                  
+                  <InertiaLink href={route('sticker.view', {sticker: sticker.id}).url()}>{sticker.title}</InertiaLink>
+
+                  <br/>
+
+                 <span>Description: {sticker.description}</span>
+
+
+                  </div>
 
 
                  </li>
