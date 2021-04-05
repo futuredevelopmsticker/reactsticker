@@ -21,9 +21,9 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var layout_1 = __importDefault(__webpack_require__(/*! ../../../components/general/layout */ "./resources/js/components/general/layout/index.tsx"));
-
 var StickerItem_1 = __importDefault(__webpack_require__(/*! ../../../components/sticker/StickerItem */ "./resources/js/components/sticker/StickerItem/index.tsx"));
+
+var layout_1 = __importDefault(__webpack_require__(/*! ../../../components/general/layout */ "./resources/js/components/general/layout/index.tsx"));
 
 var StickerListPage = function StickerListPage(_a) {
   var stickers = _a.stickers;

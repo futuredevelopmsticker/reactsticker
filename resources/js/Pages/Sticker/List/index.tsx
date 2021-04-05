@@ -1,59 +1,64 @@
 import React from "react";
 
+
 import { InertiaLink } from "@inertiajs/inertia-react"
 
 
-
-import Layout from "../../../components/general/layout"
 
 import route from "ziggy-js"
 
 
 import StickerItem from "../../../components/sticker/StickerItem"
 
+
+import Layout from "../../../components/general/layout"
+
+
 import ISticker from "../../../Records/ISticker"
 
+
+
+
+
 interface Props {
-	
-   stickers: Array<any>
+
+
+   stickers: Array<ISticker>
 
 }
-
 
 
 
 const StickerListPage: React.FC<Props> = ({ stickers }) => {
 
 
-  return (
+  return (  
+
 
 <Layout>
 
-
-    <div className="row">
+  <div className="row">
         <div className="col-sm-8">
           <ul className="list-group">
             {stickers.length > 0 &&
               stickers.map((sticker, index) => {
                
-
-               return (
+                 return (
 
                  <StickerItem sticker={sticker} /> 
 
                  )
-
-
-
+             
               })}
           </ul>
         </div>
       </div>
 
-    </Layout>
-)
+      </Layout>
 
-};
+ )
+
+}
 
 
 export default StickerListPage;

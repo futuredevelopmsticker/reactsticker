@@ -1,3 +1,6 @@
+
+import ITag from "./ITag"
+
 interface ISticker {  
 
   id: number
@@ -9,6 +12,7 @@ interface ISticker {
   user_id: number
   is_active: boolean
   views: number
+  tags: Array<ITag>
   created_at: string
   updated_at: string
 }

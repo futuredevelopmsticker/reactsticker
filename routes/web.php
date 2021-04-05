@@ -50,5 +50,23 @@ Route::get('/sticker/view/{sticker}', [StickerController::class, 'view'])->name(
 Route::post('/sticker/make-active', [StickerController::class, 'makeActive'])->name('sticker.active');
 
 
+ Route::post('/sticker/update', [StickerController::class, 'handleTagUpdate'])->name('sticker.update');
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,7 +3,16 @@ import { Inertia } from "@inertiajs/inertia"
 
 
 
+
+
+
 import Layout from "../../../components/general/layout"
+
+
+
+
+
+
 
 
 
@@ -15,9 +24,11 @@ import Layout from "../../../components/general/layout"
 const StickerAddPage: React.FC = () => {
 
 
-   const [state, setState] = useState({
 
-   link: " ",
+
+    const [state, setState] = useState({
+
+   link: "",
 
    title: 'title'
       
@@ -35,10 +46,23 @@ const StickerAddPage: React.FC = () => {
    }
 
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    Inertia.post("/sticker/preview", state)
+    Inertia.post("/sticker/preview", state, {
+
+    onStart: () => {
+
+     setState({ ...state })
+
+    }
+
+
+
+    })
   }
+
+  
 
   return (
 
@@ -64,8 +88,15 @@ const StickerAddPage: React.FC = () => {
                 />
               </div>
             </form>
+
+            <br />
        
         </div>
+
+
+
+
+
       </div>
 
 
@@ -78,3 +109,55 @@ const StickerAddPage: React.FC = () => {
 }
 
 export default StickerAddPage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

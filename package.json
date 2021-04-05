@@ -28,9 +28,11 @@
         "@inertiajs/inertia": "^0.8.6",
         "@inertiajs/inertia-react": "^0.5.5",
         "@types/react": "^17.0.3",
+        "@types/react-select": "^4.0.14",
+        "@types/ziggy-js": "^0.9.0",
+        "react-select": "^4.3.0",
         "ts-loader": "^8.1.0",
         "typescript": "^4.2.3",
-        "ziggy-js": "^0.9.4",
-        "@types/ziggy-js": "^0.9.0"
+        "ziggy-js": "^0.9.4"
     }
 }

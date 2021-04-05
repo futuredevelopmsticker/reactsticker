@@ -77,7 +77,7 @@ var layout_1 = __importDefault(__webpack_require__(/*! ../../../components/gener
 
 var StickerAddPage = function StickerAddPage() {
   var _a = react_1.useState({
-    link: " ",
+    link: "",
     title: 'title'
   }),
       state = _a[0],
@@ -91,7 +91,11 @@ var StickerAddPage = function StickerAddPage() {
 
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
-    inertia_1.Inertia.post("/sticker/preview", state);
+    inertia_1.Inertia.post("/sticker/preview", state, {
+      onStart: function onStart() {
+        setState(__assign({}, state));
+      }
+    });
   };
 
   return react_1["default"].createElement(layout_1["default"], null, react_1["default"].createElement("div", {
@@ -110,7 +114,7 @@ var StickerAddPage = function StickerAddPage() {
     name: "link",
     onChange: handleChange,
     placeholder: "Enter your link here"
-  }))))));
+  }))), react_1["default"].createElement("br", null))));
 };
 
 exports.default = StickerAddPage;

@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Tag;
-
+use App\Models\Sticker;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sticker extends Model
+class Tag extends Model
 {
     use HasFactory;
 
@@ -15,8 +14,8 @@ class Sticker extends Model
     protected $guarded = [];
 
 
-     public function tags()
+     public function stickers()
     {
-        return $this->morphToMany(Tag::class, 'taggable');
+        return $this->morphedBy(Sticker::class, 'taggable');
     }
 }

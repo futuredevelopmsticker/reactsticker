@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Sticker;
+use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,6 @@ class StickerController extends Controller
     {
         $stickers = Sticker::query()
             ->where('user_id', Auth::user()->id)
-            ->where('is_active', 1)
             ->get();
 
         return Inertia::render('Sticker/List/index', [
@@ -29,9 +29,7 @@ class StickerController extends Controller
         ]);
     }
 
-
-
-     public function detailspreview(Request $request, StickerService $stickerService)
+      public function detailspreview(Request $request, StickerService $stickerService)
     {
         $sendData = $this->validate($request, [
             'link' => ['required'],
@@ -72,23 +70,30 @@ class StickerController extends Controller
        return $showdata;
     }
 
-
         public function add()
     {
         return Inertia::render('Sticker/Add/index');
     }
 
 
+    // public function view(Sticker $sticker)
+    // {
+       
+
+    //    return $sticker;
+    // }
 
 
-     public function view(Sticker $sticker)
+    public function view(Sticker $sticker)
     {
 
 
       if (Auth::user()->id !== $sticker->user_id) {
             abort(401, 'You are not allowed to view this sticker');
         }
-       
+        
+
+        $sticker->load(['tags']);
 
         return Inertia::render('Sticker/View/index', [
             'sticker' => $sticker
@@ -97,9 +102,10 @@ class StickerController extends Controller
 
 
 
-  public function makeActive(Request $request)
+    public function makeActive(Request $request)
     {
         $sendData = $this->validate($request, [
+          
             'id' => ['required', 'exists:stickers,id']
         ]);
 
@@ -122,29 +128,56 @@ class StickerController extends Controller
         return redirect()->route('sticker.index');
     }
 
+     
+
+      public function handleTagUpdate(Request $request, StickerService $stickerService)
+    {
+        $sendData = $this->validate($request, [
+            'tags' => ['required', 'array'],
+            'id' => ['required', 'exists:stickers,id']
+        ]);
+
+        $sticker = Sticker::find($sendData['id']);
+
+        if (Auth::user()->id !== $sticker->user_id) {
+            abort(401, 'You are not allowed to make this bookmark active');
+        }
 
 
 
+         $ids = $stickerService->handleStickerTags($sendData['tags']);
+
+         $sticker->tags()->sync($ids);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          return redirect()->route('sticker.view', ['sticker' => $sticker->id]);
+       
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
